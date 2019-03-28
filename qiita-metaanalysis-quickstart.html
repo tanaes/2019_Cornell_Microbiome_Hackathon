@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>qiita-metaanalysis-quickstart</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Metaanalysis in Qiita: quick-start</h1>
+
+<h2 id="toc_1">Introduction</h2>
+
+<h4 id="toc_2">What is Qiita?</h4>
+
+<p><a href="http://qiita.ucsd.edu">Qiita</a> is an open-source online repository and analysis tool for microbiome data, created by Antonio Gonzales, Jose Navas-Molina, <em>et al.</em> in the <a href="https://knightlab.ucsd.edu">Knight Lab</a> at UCSD. It&#39;s a terrifically useful tool for organizing the first steps of a microbiome analysis, particularly when you want to share data with collaborators or compare data to previous datasets. (You can find the publication describing this tool <a href="https://www.nature.com/articles/s41592-018-0141-9">here</a>). </p>
+
+<h4 id="toc_3">What is this document?</h4>
+
+<p>This document is more or less a shortcut to certain pieces of existing Qiita documentation, plus a little bit of extra detail for bits that should be particularly useful to you in the Hackathon.</p>
+
+<h4 id="toc_4">Qiita Documentation</h4>
+
+<p>Qiita is meant to be an accessible platform for microbiome analysis and exploration, even if you don&#39;t have prior experience with bioinformatics or command-line tools. Consequently the developers have put quite a lot of effort into writing documentation. </p>
+
+<p>After you&#39;ve walked through this quick-start, if you&#39;re interested in working more with Qiita, I&#39;d recommend you more thoroughly explore the existing Qiita docs. </p>
+
+<p>My recommendation for getting started is to follow the complete <a href="https://cmi-workshop.readthedocs.io/en/latest/">Qiita Workshop Tutorial</a> from the Center for Microbiom Innovation at UCSD. This tutorial provides a small set of example data you can download, and walks you through step-by-step the creation and analysis of a new study.  </p>
+
+<p>There is additional, more-granular documentation available at the <a href="https://qiita.ucsd.edu/static/doc/html/index.html">central Qiita Documentation site</a>. This includes information on some of Qiita&#39;s more advanced features, such as the ability to <a href="https://qiita.ucsd.edu/static/doc/html/checklist-for-ebi-ena-submission.html">easily submit studies</a> from Qiita to public nucleotide repositories.</p>
+
+<h2 id="toc_5">Create an account</h2>
+
+<p>To do analyses in Qiita, you&#39;ll need to get an account. </p>
+
+<p>Follow <a href="https://cmi-workshop.readthedocs.io/en/latest/qiita-create-study.html#setting-up-qiita">these instructions</a> from the CMI Workshop Tutorial to sign up.</p>
+
+<h2 id="toc_6">Check out a study</h2>
+
+<p>&#39;Studies&#39; form the basis of the Qiita database organization: researchers create a new study, and then upload their data to the study. Initially, studies are private, only viewable by their owner (and any other accounts the owner chooses to share it with). Eventually, users can choose to make these studies public.</p>
+
+<p>If you click <code>Study / View Studies</code> in the nav bar at the top of the screen, you&#39;ll see a table of your private studies and a table of available public studies:</p>
+
+<p><img src="./resources/images/qiita_studies-page-splash.png" alt="Studies splash page"></p>
+
+<p>You can click on one of the example study titles to take a look inside. Here, I&#39;ve clicked on study #101, &quot;Succession of microbial consortia in the developing infant gu microbiome.&quot; This study was performed right here at Cornell!</p>
+
+<p><img src="./resources/images/qiita_study-example-splash.png" alt="Study splash page"></p>
+
+<p>This study also has a &#39;Gold&#39; tag, indicating that it has been curated by the Qiita development team as a great example. </p>
+
+<p>If you&#39;d like to try creating your own test study, try following <a href="https://cmi-workshop.readthedocs.io/en/latest/qiita-create-study.html#studies-in-qiita">the tutorial</a> from the CMI Workshop docs.</p>
+
+<h2 id="toc_7">Find data for a meta-analysis</h2>
+
+<p>One of the great things about Qiita is that gives you access to data from hundreds of thousands of samples <em>that have all been processed the same way</em>. This makes it really simple to get up and going, without having to worry about downloading all the raw data and running it through your own computational pipeline. (You can also download the raw data if you want!)</p>
+
+<p>There are two ways you can find data for analysis: searching for <strong>studies</strong>, and searching for <strong>samples</strong>.</p>
+
+<h3 id="toc_8">Finding studies from the study splash page</h3>
+
+<p>The table we just saw listed can be filtered by entering text into the <code>Filter by column data</code> search bar at the top of the page. This only searches the data you can read on the public splash page for the study, including the title, abstract, etc. </p>
+
+<p>For example, I can find a study I did on the gut microbes of ants from the rainforests of Peru by typing &#39;rainforest ants&#39; into the search bar:</p>
+
+<p><img src="./resources/images/qiita_rainforest-ants.png" alt="Rainforest ants search"></p>
+
+<h3 id="toc_9">Finding samples using <code>redbiom</code></h3>
+
+<p>In addition to finding complete studies, you can find <em>individual samples</em> from among the hundreds of thousands publically available in Qiita. This is a very new addition, and uses a clever search mechanism behind the scenes called <code>redbiom</code>. </p>
+
+<p>The advantage to searching for particular samples is that you can start to explore more targeted questions built directly from data. For example, what if you wanted to compare all the samples that contained a particular microbial taxon, or even a particular 16S sequence? You can find those samples using the <code>redbiom</code> search functionality.</p>
+
+<p>To search with <code>redbiom</code>, click the corresponding </p>
+
+<h4 id="toc_10">Finding samples by taxon</h4>
+
+<p>Let&#39;s say you want to search for all the samples that contain bacteria with a particular taxonomic label. Select &#39;Taxon&#39; from the dropdown, enter the search term in the box, and click the search button on the right.</p>
+
+<p>This search method uses the GreenGenes taxonomy, so you&#39;ll need to prepend the taxon label with the letter corresponding to the taxonomic level followed by two underscores. For example, if I want to search for samples containing bacteria belonging to the family Christensenellaceae, I would search for <code>f__Christensenellaceae</code>:</p>
+
+<p><img src="./resources/images/redbiom_taxon_Christensenellaceae.png" alt="f__Christensenellaceae"></p>
+
+<p>This returns quite a lot of samples!</p>
+
+<h4 id="toc_11">Finding samples by ASV sequence</h4>
+
+<p>You can also search for a particular sequence. This allows you to very finely target microbial taxa, even if they don&#39;t correspond to particular taxonomic labels. For example, let&#39;s say I want to find samples that have close relatives of <em>Methylocystis parvus</em>, a methane-oxidizing (methanotrophic) bacterium. </p>
+
+<p>I can go to NCBI and find the <a href="https://www.ncbi.nlm.nih.gov/nuccore/NR_044946.1">16S ribsomal RNA gene</a> corresponding to this bacterium. Then I can find the portion of the gene that matches most of the samples in Qiita. This happens to be the V4 region of the 16S rRNA gene. The NCBI 16S rRNA sequence I found is: </p>
+
+<div><pre><code class="language-none">&gt;NR_044946.1 Methylocystis parvus OBBP 16S ribosomal RNA, partial sequence
+AACGAACGCTGGCGGCAGGCCTAACACATGCAAGTCGAACGCTGTAGCAATACAGAGTGGCAGACGGGTG
+AGTAACGCGTGGGAACGTGCCTTTCGGTTCGGAATAACTCAGGGAAACTTGAGCTAATACCGGATACGCC
+CTTTGGGGGAAAGATTTATTGCCGAAAGATCGGCCCGCGTCCGATTAGCTAGTTGGTGTGGTAATGGCGC
+ACCAAGGCGACGATCGGTAGCTGGTCTGAGAGGATGATCAGCCACACTGGGACTGAGACACGGCCCAGAC
+TCCTACGGGAGGCAGCAGTGGGGAATATTGGACAATGGGCGCAAGCCTGATCCAGCCATGCCGCGTGAGT
+GATGAAGGCCCTAGGGTTGTAAAGCTCTTTCGCCAGGGACGATAATGACGGTACCTGGATAAGAAGCCCC
+GGCTAACTTCGTGCCAGCAGCCGCGGTAATACGAAGGGGGCTAGCGTTGTTCGGAATCACTGGGCGTAAA
+GCGCACGTAGGCGGATCTTTAAGTCAGGGGTGAAATCCCGAGGCTCAACCTCGGAACTGCCTTTGATACT
+GGAGGTCTCGAGTCCGGGAGAGGTGAGTGGAACTGCGAGTGTAGAGGTGAAATTCGTAGATATTCGCAAG
+AACACCAGTGGCGAAGGCGGCTCACTGGCCCGGTACTGACGCTGAGGTGCGAAAGCGTGGGGAGCAAACA
+GGATTAGATACCCTGGTAGTCCACGCCGTAAACGATGGATGCTAGCCGTTGGGGAGCATGCTCTTCAGTG
+GCGCAGCTAACGCTTTAAGCATCCCGCCTGGGGAGTACGGTCGCAAGATTAAAACTCAAAGGAATTGACG
+GGGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGCAGAACCTTACCAGCTTTTGAC
+ATGCCCGGTATGATCGCCAGAGATGGCTTTCTTCCCGCAAGGGGCCGGAGCACAGGTGCTGCATGGCTGT
+CGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGCAACGAGCGCAACCCTCGCCCTTAGTTGCCATC
+ATTCAGTTGGGCACTCTAGGGGGACTGCCGGTGATAAGCCGCGAGGAAGGTGGGGATGACGTCAAGTCCT
+CATGGCCCTTACAGGCTGGGCTACACACGTGCTACAATGGCGGTGACAATGGGAAGCGAAAGGGCGACCT
+GGAGCAAATCTCAAAAAGCCGTCTCAGTTCGGATTGCACTCTGCAACTCGAGTGCATGAAGGTGGAATCG
+CTAGTAATCGCAGATCAGCACGCTGCGGTGAATACGTTCCCGGGCCTTGTACACACCGCCCGTCACACCA
+TGGGAGTTGGTTTTACCCGAAGGCGTTTCGCCAACCGCAAGGAGGCAGGCGACCACGGTAGGGTCAGCGA
+CTGGGGTG</code></pre></div>
+
+<p>For <code>redbiom</code>, it&#39;s important the portion of our search sequence match <em>exactly</em> what&#39;s in the database: same start, same end. For most samples, that means selecting the 100 or 150 nucleotides immediately following the Earth Microbiome Project 515f primer, which is: <code>GTGYCAGCMGCCGCGGTAA</code>. I can replace the <code>Y</code> and <code>M</code> degenerate characters with a wildcard (<code>GTG*CAGC*GCCGCGGTAA</code>) and find this primer location using a text editor:</p>
+
+<div><pre><code class="language-none">&gt;NR_044946.1 Methylocystis parvus OBBP 16S ribosomal RNA, partial sequence
+AACGAACGCTGGCGGCAGGCCTAACACATGCAAGTCGAACGCTGTAGCAATACAGAGTGGCAGACGGGTG
+AGTAACGCGTGGGAACGTGCCTTTCGGTTCGGAATAACTCAGGGAAACTTGAGCTAATACCGGATACGCC
+CTTTGGGGGAAAGATTTATTGCCGAAAGATCGGCCCGCGTCCGATTAGCTAGTTGGTGTGGTAATGGCGC
+ACCAAGGCGACGATCGGTAGCTGGTCTGAGAGGATGATCAGCCACACTGGGACTGAGACACGGCCCAGAC
+TCCTACGGGAGGCAGCAGTGGGGAATATTGGACAATGGGCGCAAGCCTGATCCAGCCATGCCGCGTGAGT
+GATGAAGGCCCTAGGGTTGTAAAGCTCTTTCGCCAGGGACGATAATGACGGTACCTGGATAAGAAGCCCC
+GGCTAACTTC**GTGCCAGCAGCCGCGGTAA**TACGAAGGGGGCTAGCGTTGTTCGGAATCACTGGGCGTAAA
+GCGCACGTAGGCGGATCTTTAAGTCAGGGGTGAAATCCCGAGGCTCAACCTCGGAACTGCCTTTGATACT
+GGAGGTCTCGAGTCCGGGAGAGGTGAGTGGAACTGCGAGTGTAGAGGTGAAATTCGTAGATATTCGCAAG
+AACACCAGTGGCGAAGGCGGCTCACTGGCCCGGTACTGACGCTGAGGTGCGAAAGCGTGGGGAGCAAACA
+GGATTAGATACCCTGGTAGTCCACGCCGTAAACGATGGATGCTAGCCGTTGGGGAGCATGCTCTTCAGTG
+GCGCAGCTAACGCTTTAAGCATCCCGCCTGGGGAGTACGGTCGCAAGATTAAAACTCAAAGGAATTGACG
+GGGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGCAGAACCTTACCAGCTTTTGAC
+ATGCCCGGTATGATCGCCAGAGATGGCTTTCTTCCCGCAAGGGGCCGGAGCACAGGTGCTGCATGGCTGT
+CGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGCAACGAGCGCAACCCTCGCCCTTAGTTGCCATC
+ATTCAGTTGGGCACTCTAGGGGGACTGCCGGTGATAAGCCGCGAGGAAGGTGGGGATGACGTCAAGTCCT
+CATGGCCCTTACAGGCTGGGCTACACACGTGCTACAATGGCGGTGACAATGGGAAGCGAAAGGGCGACCT
+GGAGCAAATCTCAAAAAGCCGTCTCAGTTCGGATTGCACTCTGCAACTCGAGTGCATGAAGGTGGAATCG
+CTAGTAATCGCAGATCAGCACGCTGCGGTGAATACGTTCCCGGGCCTTGTACACACCGCCCGTCACACCA
+TGGGAGTTGGTTTTACCCGAAGGCGTTTCGCCAACCGCAAGGAGGCAGGCGACCACGGTAGGGTCAGCGA
+CTGGGGTG</code></pre></div>
+
+<p>Finally, I can chop out the 150 characters immediately following the primer sequence:</p>
+
+<div><pre><code class="language-none">TACGAAGGGGGCTAGCGTTGTTCGGAATCACTGGGCGTAAAGCGCACGTAGGCGGATCTTTAAGTCAGGG
+GTGAAATCCCGAGGCTCAACCTCGGAACTGCCTTTGATACTGGAGGTCTCGAGTCCGGGAGAGGTGAGTG
+GAACTGCGAG</code></pre></div>
+
+<p>I can then select <code>Feature</code> in the drop-down and enter my sequence (all caps, no spaces) and find all the samples where that exact ASV occurs:</p>
+
+<p><img src="./resources/images/redbiom_feature_Methylocystis.png" alt="Methylocystis"></p>
+
+<p>One neat thing about this is that most of the studies that have large numbers of samples containing this feature are from freshwater environments, and the particular microbe we used to search was isolated from a freshwater bog. Cool!</p>
+
+<h4 id="toc_12">Finding samples by metadata</h4>
+
+<p>Finally, we can search the sample metadata associated with each sample. The syntax for this search is a little complex, so you should refer to the <a href="https://qiita.ucsd.edu/static/doc/html/redbiom.html">redbiom documentation</a> for more specifics. </p>
+
+<p>One group of metadata search columns that is really useful for this kind of search corresponds to the <a href="http://www.earthmicrobiome.org/protocols-and-standards/empo/">Earth Microbiome Project Ontology</a>. The EMPO a pretty easily-understood hierarchical organization of sample types we used in the EMP paper. All samples available in Qiita should have EMPO categories associated with them, under the <code>qiita_empo_1</code>, <code>qiita_empo_2</code>, and <code>qiita_empo_3</code> columns. </p>
+
+<p><img src="./resources/images/envoEmpo_graph_v3.png" alt="EMPO"></p>
+
+<p>So for example, if we wanted to search for freshwater sediments, we could select <code>Metadata</code> from the drop-down and use the search query <code>where qiita_empo_3 == &#39;Sediment (non-saline)&#39;</code>:</p>
+
+<p><img src="./resources/images/redbiom_metadata_empo3-sediment-nonsaline.png" alt="freshwater sediments"></p>
+
+<p>We can restrict these to only samples that contain &#39;USA&#39; somewhere in their metadata by using the query <code>usa where qiita_empo_3 == &#39;Sediment (non-saline)&#39;</code>:</p>
+
+<p><img src="./resources/images/redbiom_metadata_usa-sediment-nonsaline.png" alt="freshwater usa sediments"></p>
+
+<h2 id="toc_13">Add data to a meta-analysis</h2>
+
+<p>Now that we&#39;ve found some interesting samples, let&#39;s combine them into one dataset we can analyze. </p>
+
+<p>Because Qiita processes sequence data using standardized parameters, and &#39;remembers&#39; which parameters were used to produce each data output, it is possible to easily combine samples processed at different times into one meta-analysis. </p>
+
+<p><a href="https://cmi-workshop.readthedocs.io/en/latest/qiita-16S-analysis.html">A complete tutorial</a> on performing analyses, as well as meta-analyses, is available at the CMI Workshop documentation. </p>
+
+<h3 id="toc_14">Selecting samples</h3>
+
+<p>Any time you do one of the above search types, you can select samples to add to a meta-analysis by clicking the green + icon in the column labeled &#39;Expand for analysis&#39;. </p>
+
+<p>Going back to my ant study from before, if I click the green + icon, I see a list of 10 different artifact types:</p>
+
+<p><img src="./resources/images/analysis_ants_artifacts.png" alt="ant study artifacts"></p>
+
+<p>Each of these represents an output (BIOM table, or OTU table) of the raw data analyzed using a particular combination of parameters. You&#39;ll want to make sure you choose artifacts produced using the same parameter combinations for a metaanalysis, so as not to mix proverbial apples and oranges. </p>
+
+<p>I&#39;ll choose the &#39;Deblur reference-hit | Trimming length: 100&#39; parameter combination, which uses the Deblur ASV pipeline, selects only the sequences that look like 16S based on a reference database to remove obvious erroneous sequences, and trims the sequence lengths to 100. This represents a parameter combination that will be present across most studies, and so represents a good starting point for metaanalyses.</p>
+
+<p>To add just this BIOM table to my analysis, I&#39;ll click the &#39;Per artifact&#39; button to add just this one artifact, and then click the next button to confirm:</p>
+
+<p><img src="./resources/images/analysis_ants_confirm.png" alt="confirm ant artifacts"></p>
+
+<p>Sometimes a study will have multiple BIOM artifacts using these same parameters, for example if it spans datasets sequenced on multiple sequence runs; in this case, there would be multiple such artifacts in the expanded table. In this case, you could click &#39;Add all&#39; to add all of these BIOM artifacts from this parameter combination at once. </p>
+
+<p>Now I&#39;ll search the table for &#39;honey bee&#39; to find bee microbiome samples to compare, and add those:</p>
+
+<p><img src="./resources/images/analysis_bee_artifacts.png" alt="ant study artifacts"></p>
+
+<h3 id="toc_15">Creating the analysis</h3>
+
+<p>After I add an artifact, I will see the &#39;analysis&#39; icon at the top right of the nav bar turn green:</p>
+
+<p><img src="./resources/images/analysis_green_icon.png" alt="ant study artifacts"></p>
+
+<p>If I click it, it will show me how many studies and samples I have selected:</p>
+
+<p><img src="./resources/images/analysis_icon_click.png" alt="ant study artifacts"></p>
+
+<p>Next, I can click <code>Analyis / Create from selected samples</code> to create a new analysis with all of these samples:</p>
+
+<p><img src="./resources/images/analysis_create_analysis.png" alt="ant study artifacts"></p>
+
+<p>This will bring me to a page that reviews all the different samples I&#39;ve selected, where I can remove studies if desired (right column), and finally click the green <code>Create Analysis</code> button when I&#39;m ready to go forward:</p>
+
+<p><img src="./resources/images/analysis_create_confirm.png" alt="ant study artifacts"></p>
+
+<p>It will then prompt me to give my analysis a name and description:</p>
+
+<p><img src="./resources/images/analysis_name.png" alt="ant study artifacts"></p>
+
+<p>This sends Qiita the command to start processing the data into a single BIOM artifact for my meta-analysis. Initially, I see this splash page while the command is waiting to run on the server:</p>
+
+<p><img src="./resources/images/analysis_create_queued.png" alt="ant study artifacts"></p>
+
+<p>Once the server processes the data, I will see an interactive network diagram showing the artifacts available for analysis. In this case, there will actually be two: one BIOM containing all the sequences from both studies, and one containing just the sequences which have been successfully inserted into a microbial phylogenetic tree using the SEPP program.</p>
+
+<p>I can click the artifact and see detailed information. Note that each &#39;artifact&#39; also contains several files individually-downloadable files. In this case, I&#39;ve clicked the top artifact icon and can see it contains the biom, a phylogenetic tree, and two html summary documents:</p>
+
+<p><img src="./resources/images/analysis_create_queued.png" alt="ant study artifacts"></p>
+
+<p>Clicking any of these will cause the file to download to my computer.</p>
+
+<p>If I scroll down, I can also see an interactive summary of the different samples and sequence counts in this artifact. By clicking around, I am able to find that there&#39;s a metadata column called <code>qiita_study_alias</code> which shows me that I have just over 350 samples from each study:</p>
+
+<p><img src="./resources/images/analysis_artifact_detail.png" alt="ant study artifacts"></p>
+
+<h3 id="toc_16">Add analysis steps</h3>
+
+<p>From here, it is possible to do a number of different analysis steps right on Qiita. For a more complete rundown of the options, check out the <a href="https://cmi-workshop.readthedocs.io/en/latest/qiita-16S-analysis.html">CMI Workshop Tutorial</a>.</p>
+
+<p>Here, I&#39;ll just go ahead and add a few steps just to show how it works.</p>
+
+<p>First, I&#39;ll click on the artifact I want (making sure it&#39;s the one that includes a phylogenetic tree) and click the <code>Process</code> button. This brings up a number of possible actions. I&#39;ll choose <code>Rarefy Table</code> to subset all my samples to the same number of sequences, and choose 5000 sequences per sample:</p>
+
+<p><img src="./resources/images/analysis_rarefy.png" alt="ant study artifacts"></p>
+
+<p>Next, I&#39;ll add a <code>Beta diversity (phylogenetic)</code> step to calculate a beta diversiy distance matrix between samples. I&#39;ll choose Unweighted UniFrac as my metric, and make sure to choose &#39;Artifact tree, if it exists&#39; to make sure it uses the phylogenetic tree contained within my artifact:</p>
+
+<p><img src="./resources/images/analysis_unifrac.png" alt="ant study artifacts"></p>
+
+<p>Finally, I&#39;ll add a step to generate a Princple Coordinates Analysis visualization of my beta-diversity distances:</p>
+
+<p><img src="./resources/images/analysis_pcoa.png" alt="ant study artifacts"></p>
+
+<h3 id="toc_17">Run analysis</h3>
+
+<p>Note that as each processing step is added, a processing step node (represented by a circle) and an output artifact (represented by a triangle) are each added to the network. Once I&#39;m happy with the steps I&#39;ve selected, I can click the green <code>Run</code> button at the top of the page to send the commands to the server:</p>
+
+<p><img src="./resources/images/analysis_ready.png" alt="ant study artifacts"></p>
+
+<p>Once jobs are running, I can click the icon at top right of the nav bar to get a status report:</p>
+
+<p><img src="./resources/images/analysis_job_status.png" alt="ant study artifacts"></p>
+
+<p>As each step finishes, the corresponding command icon in the processing network will change color to indicate the outcome:</p>
+
+<p><img src="./resources/images/analysis_network.png" alt="ant study artifacts"></p>
+
+<p>Once each step completes, I am able to click on the resulting artifact to see a summary:</p>
+
+<p><img src="./resources/images/analysis_distance_artifact.png" alt="ant study artifacts"></p>
+
+
+
+
+</body>
+
+</html>
